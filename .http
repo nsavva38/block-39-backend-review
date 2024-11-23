@@ -29,3 +29,29 @@ Content-Type: application/json
   "username": "Anakin Skywalker",
   "password": "starwars"
 }
+
+### token
+@token = {{login.response.body.token}}
+
+### Get tasks of logged in user
+GET {{host}}/tasks
+Authorization: Bearer {{token}}
+
+### POST a new task to logged in user
+POST {{host}}/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New task"
+}
+
+### DELETE task of logged in user
+DELETE {{host}}/tasks/2
+Authorization: Bearer {{token}}
+
+
+### Update task to done
+PUT {{host}}/tasks/5
+Authorization: Bearer {{token}}
+Content-Type: application/json

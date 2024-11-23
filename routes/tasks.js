@@ -21,5 +21,17 @@ router.get("/", authenticate, async (req, res, next) => {
 
 // post a new task for the logged in user
 router.post("/", authenticate, async (req, res, next) => {
-  
+  // grab the post request parameters
+  const { name } = req.body;
+
+  try {
+    const task = await prisma.task.create({
+      data: {
+        name,
+      },
+    });
+    res.status(201).json(task);
+  } catch (e) {
+    next(e);
+  }
 })

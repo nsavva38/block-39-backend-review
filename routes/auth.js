@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // token creation here
 const createToken = (id) => {
-  return jwt.sign({ id }, JWT_SECRET, { expiresIn: "1d "});
+  return jwt.sign({ id }, JWT_SECRET, { expiresIn: "1d"});
 }
 
 const prisma = require("../prisma");

@@ -1,9 +1,12 @@
 const prisma = require("../prisma");
+const bcrypt = require("bcrypt");
+
 
 const seed = async () => {
+  const hashed = await bcrypt.hash(`starwars`, 10);
   const user = Array.from({ length: 1 }, (_,i) => ({
     username: `Anakin Skywalker`,
-    password: `starwars`
+    password: hashed
   }));
   await prisma.user.createMany({
     data: user
